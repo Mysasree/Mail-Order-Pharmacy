@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: Mail-APIGateway
+  cloud:
+    gateway:
+      routes:
+      - id: Mail-User-Service
+        uri: lb://Mail-USER-SERVICE
+        predicates:
+        - Path=/users/**    
+     
+      - id: Mail-Order-Service
+        uri: lb://Mail-Order-Service
+        predicates:
+        - Path=/orders/**
+
+      - id: Mail-Medicine-Service
+        uri: lb://Mail-Medicine-Service
+        predicates:
+        - Path=/medicines/**
+        
+      - id: Mail-Payment-Service
+        uri: lb://Mail-Payment-Service
+        predicates:
+        - Path=/payments/**
+server:
+  port: 8085    
+eureka:
+  instance:
+    prefer-ip-address: true
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
