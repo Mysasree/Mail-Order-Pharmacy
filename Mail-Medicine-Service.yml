@@ -1,6 +1,3 @@
-spring:
-  application:
-    name: Mail-Medicine-Service
   datasource:
     url: jdbc:mysql://localhost:3306/MailOrderPharmacyDB
     username: root
